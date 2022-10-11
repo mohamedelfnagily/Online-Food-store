@@ -1,0 +1,35 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "AdminUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered border-3 table-hover container-md mx-auto my-5">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>User FirstName</th>
+            <th>User LastName</th>
+            <th>User Email</th>
+            <th>User Username</th>
+            <th>User Mobilenumber</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (User myUser in Model)
+        {
+            <tr>
+                <td>@myUser.Id</td>
+                <td>@myUser.FirstName</td>
+                <td>@myUser.LastName</td>
+                <td>@myUser.Email</td>
+                <td>@myUser.UserName</td>
+                <td>@myUser.mobileNumber</td>
+                <td><a asp-action="BlockUser" asp-controller="Admin" asp-route-ProdId="@myUser.Id" class="btn btn-danger w-100">Block @myUser.FirstName <span><i class="fa-solid fa-ban"></i></span></a></td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+

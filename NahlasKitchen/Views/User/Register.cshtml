@@ -1,0 +1,48 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+
+<div class="w-100 position-absolute top-0  bottom-0 end-0 start-0 d-flex align-items-center justify-content-center ">
+    <div class="BlurBox w-50 ">
+        <form method="post" class="py-4">
+            <input type="hidden" name="Register" value="Register" />
+            <div>
+                @Html.TextBoxFor(e=>e.FirstName,new{@class="form-control mb-3",placeholder="Enter you first name"})
+                @Html.ValidationMessageFor(e=>e.FirstName,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                @Html.TextBoxFor(e=>e.LastName,new{@class="form-control mb-3",placeholder="Enter you last name"})
+                @Html.ValidationMessageFor(e=>e.LastName,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                @Html.TextBoxFor(e=>e.Email,new{@class="form-control mb-3",placeholder="Enter you email"})
+                @Html.ValidationMessageFor(e=>e.Email,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            @if (ViewBag.ValidateUser != null)
+            {
+                <p class="text-danger fw-bolder ms-2 text-start">@ViewBag.ValidateUser</p>
+            }
+            <div>
+                @Html.TextBoxFor(e=>e.mobileNumber,new{@class="form-control mb-3",placeholder="Enter you mobile number"})
+                @Html.ValidationMessageFor(e=>e.mobileNumber,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+                        <div>
+                @Html.TextBoxFor(e=>e.UserName,new{@class="form-control mb-3",placeholder="Enter your User name"})
+                @Html.ValidationMessageFor(e=>e.UserName,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                @Html.PasswordFor(e=>e.Password,new{@class="form-control mb-3",placeholder="Enter you password"})
+                @Html.ValidationMessageFor(e=>e.Password,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                @Html.PasswordFor(e=>e.ConfirmPassword,new{@class="form-control mb-3",placeholder="Confirm password"})
+                @Html.ValidationMessageFor(e=>e.ConfirmPassword,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+
+            <input class="btn btn-info text-white w-50 mx-auto mb-2" type="submit" value="Register" />
+
+        </form>
+    </div>
+</div>

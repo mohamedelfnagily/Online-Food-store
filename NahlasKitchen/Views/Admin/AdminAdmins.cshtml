@@ -1,0 +1,46 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "AdminAdmins";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="my-3 container">
+    <div class="row">
+        <div class="col-md-4">
+            <a asp-action="AddAdmin" asp-controller="Admin" class="btn btn-success">
+                Add New Admin
+            </a>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered border-3 table-hover container-md mx-auto my-5">
+    <thead>
+        <tr>
+            <th>Admin Id</th>
+            <th>Admin FirstName</th>
+            <th>Admin LastName</th>
+            <th>Admin Email</th>
+            <th>Admin Username</th>
+            <th>Admin Mobilenumber</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead> 
+    <tbody>
+        @foreach (User myUser in Model)
+        {
+            <tr>
+                <td>@myUser.Id</td>
+                <td>@myUser.FirstName</td>
+                <td>@myUser.LastName</td>
+                <td>@myUser.Email</td>
+                <td>@myUser.UserName</td>
+                <td>@myUser.mobileNumber</td>
+                <td><a asp-action="BlockUser" asp-controller="Admin" asp-route-id="@myUser.Id" class="btn btn-danger">Block Admin</a></td>
+                <td><a asp-action="EditAdmin" asp-controller="Admin" asp-route-id="@myUser.Id" class="btn btn-warning">Update</a></td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+

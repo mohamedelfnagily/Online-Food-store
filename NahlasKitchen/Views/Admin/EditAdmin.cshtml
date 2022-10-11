@@ -1,0 +1,37 @@
+﻿@model User
+@{
+    ViewData["Title"] = "EditAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="w-100 position-absolute top-0  bottom-0 end-0 start-0 d-flex align-items-center justify-content-center ">
+    <div class="BlurBox w-50 ">
+        <form method="post" class="py-4">
+            <input type="hidden" name="Register" value="Register" />
+            <div>
+                <input asp-for="FirstName" class="form-control mb-3" />
+                @Html.ValidationMessageFor(e=>e.FirstName,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                <input asp-for="LastName" class="form-control mb-3" />
+                @Html.ValidationMessageFor(e=>e.LastName,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                <input asp-for="Email" class="form-control mb-3" />
+                @Html.ValidationMessageFor(e=>e.Email,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                <input asp-for="mobileNumber" class="form-control mb-3" />
+                @Html.ValidationMessageFor(e=>e.mobileNumber,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                <input asp-for="UserName" class="form-control mb-3" />
+                @Html.ValidationMessageFor(e=>e.UserName,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+
+            <input class="btn btn-info text-white w-50 mx-auto mb-2" type="submit" value="Save" />
+
+        </form>
+    </div>
+</div>
+

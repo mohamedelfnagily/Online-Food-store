@@ -1,0 +1,44 @@
+﻿@model User
+@{
+    ViewData["Title"] = "SignIn";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+
+<div class="w-100 vh-100 position-absolute top-0 bottom-0 end-0 start-0 d-flex align-items-center justify-content-center ">
+    <div class="BlurBox w-50 ">
+        <form method="post" class="py-4">
+            <div>
+                @Html.TextBoxFor(e=>e.Email,new{@class="form-control mb-3",placeholder="Enter you email"})
+                @Html.ValidationMessageFor(e=>e.Email,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            <div>
+                @Html.PasswordFor(e=>e.Password,new{@class="form-control mb-3",placeholder="Enter you password"})
+                @Html.ValidationMessageFor(e=>e.Password,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+            </div>
+            @if (ViewBag.ValidateUser!=null)
+            {
+                <p class="text-danger fw-bolder ms-2 text-start">@ViewBag.ValidateUser</p>
+            }
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="true" name="rememberMe" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Remember me
+                </label>
+            </div>
+            <input class="btn btn-info text-white w-50 mx-auto mb-2" type="submit" value="Sign In" />
+            <div class="container-fluid">
+                <div class="row">
+                    <button class="col-md-6 btn btn-success mb-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-brands fa-google text-white me-3"></i>
+                        Google
+                    </button>
+                    <button class="col-md-6 btn btn-dark mb-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-brands fa-facebook-f me-3 text-info"></i>
+                        Facebook
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

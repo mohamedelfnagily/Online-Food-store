@@ -1,0 +1,54 @@
+﻿@model NahlasKitchen.Models.ViewModels.CartViewModel
+@{
+    ViewData["Title"] = "DisplayCart";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+
+@if(Model.prods.Count>0)
+{
+    <table class="table table-bordered border-3 table-hover w-75 mx-auto my-5">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Image</th>
+                <th>Product Description</th>
+                <th>Product Category</th>
+                <th>Total Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Product prod in Model.prods)
+            {
+                <tr>
+                    <td>@prod.Name</td>
+                    <td><img src="~/KitchenImages/@prod.Image1" height="100" width="100" class="border border-1 border-light rounded-circle" alt="..."></td>
+                    <td>@prod.Description</td>
+                    <td>@prod.Category.Name</td>
+                    <td>@prod.Price $</td>
+                    <td><a asp-action="removeItem" asp-controller="Cart" asp-route-ProdId="@prod.Id" class="btn btn-danger">Remove</a></td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="text-center" colspan="2"><a  onclick="return confirm('Are you sure you want to clear your Item?')" asp-action="clearCart" asp-controller="Cart" class="btn btn-outline-warning ">Clear Cart</a></td>
+                <td class="text-center" colspan="2"><a asp-action="OrderDetails" asp-controller="Order" class="btn btn-outline-info ">CheckOut</a></td>
+                <td colspan="2"><span class="fw-bolder">Total Price = </span> @Model.TotalPrice $</td>
+            </tr>
+        </tfoot>
+    </table>
+}
+else
+{
+    <div class="w-100 d-flex justify-content-center">
+        <span class="h1 fw-bold border border-2 py-3 px-5  mt-5">Your Cart is Empty</span>
+    </div>
+    <div class="d-flex justify-content-center w-100 mt-5">
+        <a asp-action="Index" asp-controller=User class="btn btn-primary d-flex align-items-center">
+            <h5 class="m-0 p-0">Continue shopping</h5>
+            <i class="fa-solid fa-truck-fast fa-2x ms-4"></i>
+        </a>
+    </div>
+}
+

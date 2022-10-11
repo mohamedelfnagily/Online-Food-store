@@ -1,0 +1,88 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container w-100 border-bottom text-md-center">
+    <h1 class="fw-bolder my-5">What Customers See</h1>
+</div>
+
+<section class="py-5 myCont">
+    @if (Model.Count != 0)
+    {
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                @foreach (Product p in Model)
+                {
+                    <div class="col mb-5">
+                        <div class="card h-100">
+                            <!-- Sale badge-->
+                            @if (@p.OnSale == "true")
+                            {
+                                <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                            }
+                            <!-- Product image-->
+                            @if (p.Image1 != null)
+                            {
+                                <img style="cursor:pointer;" height="180" width="280"   class="card-img-top" src="./KitchenImages/@p.Image1" alt="..."/>
+                            }
+                            else
+                            {
+                                <img style="cursor:pointer;" class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." id="myImg" />
+                            }
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">@p.Name</h5>
+                                    <!-- Product Description-->
+                                    <small>@p.Description</small>
+                                    <!-- Product reviews-->
+                                    <div class="d-flex justify-content-center small text-warning mb-2">
+                                        @for (int i = 0; i < p.Rating.Value; i++)
+                                        {
+                                            <div class="bi-star-fill"><i class="fa-solid fa-star text-warning"></i></div>
+                                        }
+
+                                    </div>
+                                    <!-- Product price-->
+                                    @if (p.OnSale == "true")
+                                    {
+                                        <span class="text-muted text-decoration-line-through text-decoration-line-through">@p.Price<span class="text-lead">$</span></span>
+                                    }
+                                    @p.Price<span class="text-lead">$</span>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a  class="btn btn-outline-dark mt-auto">Add to cart</a></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <h1 class="text-center">No products to show</h1>
+    }
+    <div aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li style="cursor:pointer;" class="page-item"><a class="page-link page" id="-1">Previous</a></li>
+            <li style="cursor:pointer;" class="page-item"><a class="page-link page" id="1">1</a></li>
+            <li style="cursor:pointer;" class="page-item"><a class="page-link page" id="2">2</a></li>
+            <li style="cursor:pointer;" class="page-item"><a class="page-link page" id="3">3</a></li>
+            <li style="cursor:pointer;" class="page-item"><a class="page-link page" id="+1">Next</a></li>
+        </ul>
+    </div>
+</section>
+
+
+
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+</footer>

@@ -1,0 +1,44 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "OrderDetails";
+    Layout = "~/Views/Shared/_myLayout.cshtml";
+}
+
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-8 ">
+            <div class="w-100 border-bottom"><h4 class="mb-3">SHIPPING ADDRESS</h4></div>
+            <form method="post" class="py-4">
+                <input type="hidden" name="Register" value="Register" />
+                <div>
+                    @Html.TextBoxFor(e=>e.Address,new{@class="form-control mb-3",placeholder="Address"})
+                    @Html.ValidationMessageFor(e=>e.Address,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(e=>e.City,new{@class="form-control mb-3",placeholder="City"})
+                    @Html.ValidationMessageFor(e=>e.City,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(e=>e.ZipCode,new{@class="form-control mb-3",placeholder="Zip Code"})
+                    @Html.ValidationMessageFor(e=>e.ZipCode,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+                </div>
+                <div>
+                    @Html.TextBoxFor(e=>e.MobileNumber,new{@class="form-control mb-3",placeholder="Mobile Number"})
+                    @Html.ValidationMessageFor(e=>e.MobileNumber,"",new{@class="text-danger fw-bolder ms-2 text-start d-block mb-2"})
+                </div>
+                <input class="btn btn-secondary text-white w-50 mx-auto mb-2" type="submit" value="CHECK OUT" />
+
+            </form>
+        </div>
+        <div class="col-md-4 bg-secondary rounded-3 ">
+            <div class="w-100 text-center"><h6 class="my-3 fw-bolder text-light">ORDER SUMMARY</h6></div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+</footer>
+

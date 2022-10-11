@@ -1,0 +1,41 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<form class="container mt-5" method="post" enctype="multipart/form-data">
+    <div class="mb-3 mt-5">
+        @Html.TextBoxFor(e=>e.Name,new{@class="form-control" , placeholder="Product Name"})
+        @Html.ValidationMessageFor(e=>e.Name,"",new{@class="text-danger d-block fw-bolder"})
+    </div>
+    <div class="mb-3">
+        @Html.TextBoxFor(e=>e.Description,new{@class="form-control" , placeholder="Product Description"})
+        @Html.ValidationMessageFor(e=>e.Description,"",new{@class="text-danger d-block fw-bolder"})
+    </div>
+    <div class="mb-3">
+        @Html.TextBoxFor(e=>e.Price,new{@class="form-control" , placeholder="Product Price"})
+        @Html.ValidationMessageFor(e=>e.Price,"",new{@class="text-danger d-block fw-bolder"})
+    </div>
+    <div class="mb-3">
+        <select name="OnSale" class="form-control" >
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+        <div class="mb-3">
+        <select asp-for="CategoryId" class="form-control">
+            @foreach (var cat in ViewBag.cats)
+            {
+                <option value="@cat.Id">@cat.Name</option>
+            }
+        </select>
+    </div>
+    <input class="form-control mb-3"type="file"  asp-for="Image1"/>
+    <input class="form-control mb-3"type="file"  asp-for="Image2"/>
+    <input class="form-control mb-3"type="file"  asp-for="Image3"/>
+    <input type="submit" value="Submmit" class="btn btn-warning text-white w-50 mx-auto mb-2" />
+
+
+</form>
